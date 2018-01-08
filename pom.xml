@@ -1,0 +1,70 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.xbed</groupId>
+  <artifactId>mybatis.generator</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>mybatis.generator</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+      <generator.v>1.3.5</generator.v>
+      <mysql-connector.v>5.1.39</mysql-connector.v>
+      <jdk.v>1.7</jdk.v>
+      <Encoding>UTF-8</Encoding>
+  </properties>
+
+  <dependencies>
+  </dependencies>
+  
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <compilerVersion>${jdk.v}</compilerVersion>
+                    <source>${jdk.v}</source>
+                    <target>${jdk.v}</target>
+                    <encoding>${Encoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>${generator.v}</version>
+                <configuration>
+                    <configurationFile>src/main/resources/generator.xml</configurationFile>
+                    <verbose>true</verbose>
+                    <overwrite>true</overwrite>
+                </configuration>
+                <!--插件需要单独配置数据库链接 -->
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysql-connector.v}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>mybatis-plugins</groupId>
+                        <artifactId>mybatis-plugins</artifactId>
+                        <version>0.0.1</version>
+                        <scope>system</scope>
+                        <systemPath>${project.basedir}/src/main/resources/mybatis-plugins.jar</systemPath>
+                    </dependency>
+                	<dependency>
+					    <groupId>org.mybatis.generator</groupId>
+					    <artifactId>mybatis-generator-core</artifactId>
+					    <version>1.3.5</version>
+					</dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+</project>

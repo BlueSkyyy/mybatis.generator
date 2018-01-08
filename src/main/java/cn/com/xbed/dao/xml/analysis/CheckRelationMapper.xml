@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.xbed.dao.access.analysis.CheckRelationMapper">
+  <resultMap id="BaseResultMap" type="cn.com.xbed.dao.entity.analysis.CheckRelation">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="checkin_info_id" jdbcType="INTEGER" property="checkinInfoId" />
+    <result column="settlement_id" jdbcType="INTEGER" property="settlementId" />
+    <result column="pay_no" jdbcType="VARCHAR" property="payNo" />
+    <result column="cur_date" jdbcType="VARCHAR" property="curDate" />
+    <result column="settlement_price" jdbcType="INTEGER" property="settlementPrice" />
+    <result column="create_name" jdbcType="VARCHAR" property="createName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_name" jdbcType="VARCHAR" property="updateName" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, checkin_info_id, settlement_id, pay_no, cur_date, settlement_price, create_name, 
+    create_time, update_name, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xbed_analysis.check_relation
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from xbed_analysis.check_relation
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.com.xbed.dao.entity.analysis.CheckRelation" useGeneratedKeys="true">
+    insert into xbed_analysis.check_relation (checkin_info_id, settlement_id, pay_no, 
+      cur_date, settlement_price, create_name, 
+      create_time, update_name, update_time
+      )
+    values (#{checkinInfoId,jdbcType=INTEGER}, #{settlementId,jdbcType=INTEGER}, #{payNo,jdbcType=VARCHAR}, 
+      #{curDate,jdbcType=VARCHAR}, #{settlementPrice,jdbcType=INTEGER}, #{createName,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateName,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.com.xbed.dao.entity.analysis.CheckRelation" useGeneratedKeys="true">
+    insert into xbed_analysis.check_relation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="checkinInfoId != null">
+        checkin_info_id,
+      </if>
+      <if test="settlementId != null">
+        settlement_id,
+      </if>
+      <if test="payNo != null">
+        pay_no,
+      </if>
+      <if test="curDate != null">
+        cur_date,
+      </if>
+      <if test="settlementPrice != null">
+        settlement_price,
+      </if>
+      <if test="createName != null">
+        create_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateName != null">
+        update_name,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="checkinInfoId != null">
+        #{checkinInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="settlementId != null">
+        #{settlementId,jdbcType=INTEGER},
+      </if>
+      <if test="payNo != null">
+        #{payNo,jdbcType=VARCHAR},
+      </if>
+      <if test="curDate != null">
+        #{curDate,jdbcType=VARCHAR},
+      </if>
+      <if test="settlementPrice != null">
+        #{settlementPrice,jdbcType=INTEGER},
+      </if>
+      <if test="createName != null">
+        #{createName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateName != null">
+        #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.xbed.dao.entity.analysis.CheckRelation">
+    update xbed_analysis.check_relation
+    <set>
+      <if test="checkinInfoId != null">
+        checkin_info_id = #{checkinInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="settlementId != null">
+        settlement_id = #{settlementId,jdbcType=INTEGER},
+      </if>
+      <if test="payNo != null">
+        pay_no = #{payNo,jdbcType=VARCHAR},
+      </if>
+      <if test="curDate != null">
+        cur_date = #{curDate,jdbcType=VARCHAR},
+      </if>
+      <if test="settlementPrice != null">
+        settlement_price = #{settlementPrice,jdbcType=INTEGER},
+      </if>
+      <if test="createName != null">
+        create_name = #{createName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateName != null">
+        update_name = #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.xbed.dao.entity.analysis.CheckRelation">
+    update xbed_analysis.check_relation
+    set checkin_info_id = #{checkinInfoId,jdbcType=INTEGER},
+      settlement_id = #{settlementId,jdbcType=INTEGER},
+      pay_no = #{payNo,jdbcType=VARCHAR},
+      cur_date = #{curDate,jdbcType=VARCHAR},
+      settlement_price = #{settlementPrice,jdbcType=INTEGER},
+      create_name = #{createName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_name = #{updateName,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateBySelectiveBatch">
+    <foreach collection="list" index="index" item="item" separator=";">
+      <if test="item.id != null">
+        update xbed_analysis.check_relation
+        <set>
+          <if test="item.checkinInfoId != null">
+            checkin_info_id = #{item.checkinInfoId,jdbcType=INTEGER},
+          </if>
+          <if test="item.settlementId != null">
+            settlement_id = #{item.settlementId,jdbcType=INTEGER},
+          </if>
+          <if test="item.payNo != null">
+            pay_no = #{item.payNo,jdbcType=VARCHAR},
+          </if>
+          <if test="item.curDate != null">
+            cur_date = #{item.curDate,jdbcType=VARCHAR},
+          </if>
+          <if test="item.settlementPrice != null">
+            settlement_price = #{item.settlementPrice,jdbcType=INTEGER},
+          </if>
+          <if test="item.createName != null">
+            create_name = #{item.createName,jdbcType=VARCHAR},
+          </if>
+          <if test="item.createTime != null">
+            create_time = #{item.createTime,jdbcType=TIMESTAMP},
+          </if>
+          <if test="item.updateName != null">
+            update_name = #{item.updateName,jdbcType=VARCHAR},
+          </if>
+          <if test="item.updateTime != null">
+            update_time = #{item.updateTime,jdbcType=TIMESTAMP},
+          </if>
+        </set>
+        where id = #{item.id,jdbcType=INTEGER}
+      </if>
+    </foreach>
+  </update>
+  <update id="updateBatch">
+    <foreach collection="list" index="index" item="item" separator=";">
+      <if test="item.id != null">
+        update xbed_analysis.check_relation
+        set checkin_info_id = #{item.checkinInfoId,jdbcType=INTEGER},
+          settlement_id = #{item.settlementId,jdbcType=INTEGER},
+          pay_no = #{item.payNo,jdbcType=VARCHAR},
+          cur_date = #{item.curDate,jdbcType=VARCHAR},
+          settlement_price = #{item.settlementPrice,jdbcType=INTEGER},
+          create_name = #{item.createName,jdbcType=VARCHAR},
+          create_time = #{item.createTime,jdbcType=TIMESTAMP},
+          update_name = #{item.updateName,jdbcType=VARCHAR},
+          update_time = #{item.updateTime,jdbcType=TIMESTAMP}
+        where id = #{item.id,jdbcType=INTEGER}
+      </if>
+    </foreach>
+  </update>
+  <insert id="insertBatch">
+    insert into xbed_analysis.check_relation (checkin_info_id, settlement_id, pay_no, cur_date, settlement_price, 
+    create_name, create_time, update_name, update_time
+    ) values 
+    <foreach collection="list" index="index" item="item" separator=",">
+      (#{item.checkinInfoId,jdbcType=INTEGER}, #{item.settlementId,jdbcType=INTEGER}, #{item.payNo,jdbcType=VARCHAR}, #{item.curDate,jdbcType=VARCHAR}, #{item.settlementPrice,jdbcType=INTEGER}, 
+        #{item.createName,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateName,jdbcType=VARCHAR}, #{item.updateTime,jdbcType=TIMESTAMP}
+        )
+    </foreach>
+  </insert>
+
+
+
+  <insert id="insertRelation">
+    INSERT INTO xbed_analysis.check_relation
+    SELECT DISTINCT NULL, c.checkin_info_id, p.id, p.pay_no, #{curDate}, 'system', NOW(), 'system', NOW() FROM
+    (SELECT a.id, a.pay_no FROM
+    (SELECT s.* FROM xbed_business.settlements s WHERE s.id IN
+    <foreach collection="settlementIdList" index="index" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    ) a,
+    (SELECT cm.settlement_id, SUM(cm.real_price) price FROM xbed_business.consumptions cm WHERE cm.settlement_id IN
+    <foreach collection="settlementIdList" index="index" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    AND stat = 2 GROUP BY pay_no) b
+    WHERE a.id = b.settlement_id AND (a.price - a.refund_amount) = b.price) p LEFT JOIN xbed_business.consumptions c ON p.id = c.settlement_id
+  </insert>
+
+  <delete id="deleteByCurDate" parameterType="java.lang.String">
+    DELETE FROM xbed_analysis.check_relation WHERE cur_date = #{curDate}
+  </delete>
+</mapper>

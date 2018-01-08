@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xbed.com.cn.dao.access.owner.OwnerMapper">
+  <resultMap id="BaseResultMap" type="xbed.com.cn.dao.entity.owner.Owner">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="otp_secret_key" jdbcType="VARCHAR" property="otpSecretKey" />
+    <result column="password_digest" jdbcType="VARCHAR" property="passwordDigest" />
+    <result column="gender" jdbcType="INTEGER" property="gender" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="draw_pwd" jdbcType="VARCHAR" property="drawPwd" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="district" jdbcType="VARCHAR" property="district" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+    <result column="bank_user" jdbcType="VARCHAR" property="bankUser" />
+    <result column="bank_account" jdbcType="VARCHAR" property="bankAccount" />
+    <result column="id_card" jdbcType="VARCHAR" property="idCard" />
+    <result column="card_front_url" jdbcType="VARCHAR" property="cardFrontUrl" />
+    <result column="card_back_url" jdbcType="VARCHAR" property="cardBackUrl" />
+    <result column="business_license_url" jdbcType="VARCHAR" property="businessLicenseUrl" />
+    <result column="is_accept" jdbcType="INTEGER" property="isAccept" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="credit_no" jdbcType="VARCHAR" property="creditNo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, mobile, status, otp_secret_key, password_digest, gender, created_at, updated_at, 
+    email, draw_pwd, type, province, city, district, address, bank_name, bank_user, bank_account, 
+    id_card, card_front_url, card_back_url, business_license_url, is_accept, open_id, 
+    credit_no
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xbed_owner.owners
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from xbed_owner.owners
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="xbed.com.cn.dao.entity.owner.Owner" useGeneratedKeys="true">
+    insert into xbed_owner.owners (name, mobile, status, 
+      otp_secret_key, password_digest, gender, 
+      created_at, updated_at, email, 
+      draw_pwd, type, province, 
+      city, district, address, 
+      bank_name, bank_user, bank_account, 
+      id_card, card_front_url, card_back_url, 
+      business_license_url, is_accept, open_id, 
+      credit_no)
+    values (#{name,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{otpSecretKey,jdbcType=VARCHAR}, #{passwordDigest,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER}, 
+      #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}, #{email,jdbcType=VARCHAR}, 
+      #{drawPwd,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{district,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{bankName,jdbcType=VARCHAR}, #{bankUser,jdbcType=VARCHAR}, #{bankAccount,jdbcType=VARCHAR}, 
+      #{idCard,jdbcType=VARCHAR}, #{cardFrontUrl,jdbcType=VARCHAR}, #{cardBackUrl,jdbcType=VARCHAR}, 
+      #{businessLicenseUrl,jdbcType=VARCHAR}, #{isAccept,jdbcType=INTEGER}, #{openId,jdbcType=VARCHAR}, 
+      #{creditNo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="xbed.com.cn.dao.entity.owner.Owner" useGeneratedKeys="true">
+    insert into xbed_owner.owners
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="otpSecretKey != null">
+        otp_secret_key,
+      </if>
+      <if test="passwordDigest != null">
+        password_digest,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="drawPwd != null">
+        draw_pwd,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="district != null">
+        district,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="bankName != null">
+        bank_name,
+      </if>
+      <if test="bankUser != null">
+        bank_user,
+      </if>
+      <if test="bankAccount != null">
+        bank_account,
+      </if>
+      <if test="idCard != null">
+        id_card,
+      </if>
+      <if test="cardFrontUrl != null">
+        card_front_url,
+      </if>
+      <if test="cardBackUrl != null">
+        card_back_url,
+      </if>
+      <if test="businessLicenseUrl != null">
+        business_license_url,
+      </if>
+      <if test="isAccept != null">
+        is_accept,
+      </if>
+      <if test="openId != null">
+        open_id,
+      </if>
+      <if test="creditNo != null">
+        credit_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="otpSecretKey != null">
+        #{otpSecretKey,jdbcType=VARCHAR},
+      </if>
+      <if test="passwordDigest != null">
+        #{passwordDigest,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="drawPwd != null">
+        #{drawPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null">
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankUser != null">
+        #{bankUser,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null">
+        #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null">
+        #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="cardFrontUrl != null">
+        #{cardFrontUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="cardBackUrl != null">
+        #{cardBackUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicenseUrl != null">
+        #{businessLicenseUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="isAccept != null">
+        #{isAccept,jdbcType=INTEGER},
+      </if>
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="creditNo != null">
+        #{creditNo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="xbed.com.cn.dao.entity.owner.Owner">
+    update xbed_owner.owners
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="otpSecretKey != null">
+        otp_secret_key = #{otpSecretKey,jdbcType=VARCHAR},
+      </if>
+      <if test="passwordDigest != null">
+        password_digest = #{passwordDigest,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="drawPwd != null">
+        draw_pwd = #{drawPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null">
+        district = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankUser != null">
+        bank_user = #{bankUser,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null">
+        bank_account = #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null">
+        id_card = #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="cardFrontUrl != null">
+        card_front_url = #{cardFrontUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="cardBackUrl != null">
+        card_back_url = #{cardBackUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicenseUrl != null">
+        business_license_url = #{businessLicenseUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="isAccept != null">
+        is_accept = #{isAccept,jdbcType=INTEGER},
+      </if>
+      <if test="openId != null">
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="creditNo != null">
+        credit_no = #{creditNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="xbed.com.cn.dao.entity.owner.Owner">
+    update xbed_owner.owners
+    set name = #{name,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      otp_secret_key = #{otpSecretKey,jdbcType=VARCHAR},
+      password_digest = #{passwordDigest,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=INTEGER},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      email = #{email,jdbcType=VARCHAR},
+      draw_pwd = #{drawPwd,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      district = #{district,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      bank_name = #{bankName,jdbcType=VARCHAR},
+      bank_user = #{bankUser,jdbcType=VARCHAR},
+      bank_account = #{bankAccount,jdbcType=VARCHAR},
+      id_card = #{idCard,jdbcType=VARCHAR},
+      card_front_url = #{cardFrontUrl,jdbcType=VARCHAR},
+      card_back_url = #{cardBackUrl,jdbcType=VARCHAR},
+      business_license_url = #{businessLicenseUrl,jdbcType=VARCHAR},
+      is_accept = #{isAccept,jdbcType=INTEGER},
+      open_id = #{openId,jdbcType=VARCHAR},
+      credit_no = #{creditNo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateBySelectiveBatch">
+    <foreach collection="list" index="index" item="item" separator=";">
+      <if test="item.id != null">
+        update xbed_owner.owners
+        <set>
+          <if test="item.name != null">
+            name = #{item.name,jdbcType=VARCHAR},
+          </if>
+          <if test="item.mobile != null">
+            mobile = #{item.mobile,jdbcType=VARCHAR},
+          </if>
+          <if test="item.status != null">
+            status = #{item.status,jdbcType=INTEGER},
+          </if>
+          <if test="item.otpSecretKey != null">
+            otp_secret_key = #{item.otpSecretKey,jdbcType=VARCHAR},
+          </if>
+          <if test="item.passwordDigest != null">
+            password_digest = #{item.passwordDigest,jdbcType=VARCHAR},
+          </if>
+          <if test="item.gender != null">
+            gender = #{item.gender,jdbcType=INTEGER},
+          </if>
+          <if test="item.createdAt != null">
+            created_at = #{item.createdAt,jdbcType=TIMESTAMP},
+          </if>
+          <if test="item.updatedAt != null">
+            updated_at = #{item.updatedAt,jdbcType=TIMESTAMP},
+          </if>
+          <if test="item.email != null">
+            email = #{item.email,jdbcType=VARCHAR},
+          </if>
+          <if test="item.drawPwd != null">
+            draw_pwd = #{item.drawPwd,jdbcType=VARCHAR},
+          </if>
+          <if test="item.type != null">
+            type = #{item.type,jdbcType=INTEGER},
+          </if>
+          <if test="item.province != null">
+            province = #{item.province,jdbcType=VARCHAR},
+          </if>
+          <if test="item.city != null">
+            city = #{item.city,jdbcType=VARCHAR},
+          </if>
+          <if test="item.district != null">
+            district = #{item.district,jdbcType=VARCHAR},
+          </if>
+          <if test="item.address != null">
+            address = #{item.address,jdbcType=VARCHAR},
+          </if>
+          <if test="item.bankName != null">
+            bank_name = #{item.bankName,jdbcType=VARCHAR},
+          </if>
+          <if test="item.bankUser != null">
+            bank_user = #{item.bankUser,jdbcType=VARCHAR},
+          </if>
+          <if test="item.bankAccount != null">
+            bank_account = #{item.bankAccount,jdbcType=VARCHAR},
+          </if>
+          <if test="item.idCard != null">
+            id_card = #{item.idCard,jdbcType=VARCHAR},
+          </if>
+          <if test="item.cardFrontUrl != null">
+            card_front_url = #{item.cardFrontUrl,jdbcType=VARCHAR},
+          </if>
+          <if test="item.cardBackUrl != null">
+            card_back_url = #{item.cardBackUrl,jdbcType=VARCHAR},
+          </if>
+          <if test="item.businessLicenseUrl != null">
+            business_license_url = #{item.businessLicenseUrl,jdbcType=VARCHAR},
+          </if>
+          <if test="item.isAccept != null">
+            is_accept = #{item.isAccept,jdbcType=INTEGER},
+          </if>
+          <if test="item.openId != null">
+            open_id = #{item.openId,jdbcType=VARCHAR},
+          </if>
+          <if test="item.creditNo != null">
+            credit_no = #{item.creditNo,jdbcType=VARCHAR},
+          </if>
+        </set>
+        where id = #{item.id,jdbcType=INTEGER}
+      </if>
+    </foreach>
+  </update>
+  <update id="updateBatch">
+    <foreach collection="list" index="index" item="item" separator=";">
+      <if test="item.id != null">
+        update xbed_owner.owners
+        set name = #{item.name,jdbcType=VARCHAR},
+          mobile = #{item.mobile,jdbcType=VARCHAR},
+          status = #{item.status,jdbcType=INTEGER},
+          otp_secret_key = #{item.otpSecretKey,jdbcType=VARCHAR},
+          password_digest = #{item.passwordDigest,jdbcType=VARCHAR},
+          gender = #{item.gender,jdbcType=INTEGER},
+          created_at = #{item.createdAt,jdbcType=TIMESTAMP},
+          updated_at = #{item.updatedAt,jdbcType=TIMESTAMP},
+          email = #{item.email,jdbcType=VARCHAR},
+          draw_pwd = #{item.drawPwd,jdbcType=VARCHAR},
+          type = #{item.type,jdbcType=INTEGER},
+          province = #{item.province,jdbcType=VARCHAR},
+          city = #{item.city,jdbcType=VARCHAR},
+          district = #{item.district,jdbcType=VARCHAR},
+          address = #{item.address,jdbcType=VARCHAR},
+          bank_name = #{item.bankName,jdbcType=VARCHAR},
+          bank_user = #{item.bankUser,jdbcType=VARCHAR},
+          bank_account = #{item.bankAccount,jdbcType=VARCHAR},
+          id_card = #{item.idCard,jdbcType=VARCHAR},
+          card_front_url = #{item.cardFrontUrl,jdbcType=VARCHAR},
+          card_back_url = #{item.cardBackUrl,jdbcType=VARCHAR},
+          business_license_url = #{item.businessLicenseUrl,jdbcType=VARCHAR},
+          is_accept = #{item.isAccept,jdbcType=INTEGER},
+          open_id = #{item.openId,jdbcType=VARCHAR},
+          credit_no = #{item.creditNo,jdbcType=VARCHAR}
+        where id = #{item.id,jdbcType=INTEGER}
+      </if>
+    </foreach>
+  </update>
+  <insert id="insertBatch">
+    insert into xbed_owner.owners (name, mobile, status, otp_secret_key, password_digest, 
+    gender, created_at, updated_at, email, draw_pwd, 
+    type, province, city, district, address, 
+    bank_name, bank_user, bank_account, id_card, card_front_url, 
+    card_back_url, business_license_url, is_accept, open_id, 
+    credit_no) values 
+    <foreach collection="list" index="index" item="item" separator=",">
+      (#{item.name,jdbcType=VARCHAR}, #{item.mobile,jdbcType=VARCHAR}, #{item.status,jdbcType=INTEGER}, #{item.otpSecretKey,jdbcType=VARCHAR}, #{item.passwordDigest,jdbcType=VARCHAR}, 
+        #{item.gender,jdbcType=INTEGER}, #{item.createdAt,jdbcType=TIMESTAMP}, #{item.updatedAt,jdbcType=TIMESTAMP}, #{item.email,jdbcType=VARCHAR}, #{item.drawPwd,jdbcType=VARCHAR}, 
+        #{item.type,jdbcType=INTEGER}, #{item.province,jdbcType=VARCHAR}, #{item.city,jdbcType=VARCHAR}, #{item.district,jdbcType=VARCHAR}, #{item.address,jdbcType=VARCHAR}, 
+        #{item.bankName,jdbcType=VARCHAR}, #{item.bankUser,jdbcType=VARCHAR}, #{item.bankAccount,jdbcType=VARCHAR}, #{item.idCard,jdbcType=VARCHAR}, #{item.cardFrontUrl,jdbcType=VARCHAR}, 
+        #{item.cardBackUrl,jdbcType=VARCHAR}, #{item.businessLicenseUrl,jdbcType=VARCHAR}, #{item.isAccept,jdbcType=INTEGER}, #{item.openId,jdbcType=VARCHAR}, 
+        #{item.creditNo,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+</mapper>
